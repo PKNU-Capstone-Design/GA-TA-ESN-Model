@@ -223,7 +223,7 @@ def run_genetic_algorithm(train_df_ga: pd.DataFrame, test_df_ga: pd.DataFrame, t
     return best_individual, log
     
 def perform_final_backtest(train_df: pd.DataFrame, test_df: pd.DataFrame, best_params: list, technical_signals_list: list,
-                         random_state: int = 42):
+                         random_state: int = 42, plot_results: bool = True):
     spectral_radius, sparsity, input_scaling, buy_threshold, sell_threshold = best_params
 
     n_reservoir = N_RESERVOIR_FIXED
@@ -269,7 +269,8 @@ def perform_final_backtest(train_df: pd.DataFrame, test_df: pd.DataFrame, best_p
     print("\n최종 백테스팅 결과 (최적화된 파라미터):")
     print(stats_final)
     
-    bt_final.plot(filename='test_df_backtest_results', open_browser=True)
+    if plot_results:
+        bt_final.plot(filename='test_df_backtest_results', open_browser=True)
     
     return stats_final, final_backtest_signals_df
 
@@ -346,7 +347,8 @@ def add_trend_features(df, p_long, p_short):
     
     return df
     
-def ts_optimization(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.DataFrame):
+def ts_optimization(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.DataFrame,
+                    ta_population_size: int = 50, ta_generations: int = 50):
     """
     1. 각 기술적 지표의 최적 파라미터를 'train_df'로 찾습니다.
     2. 워밍업 데이터를 포함하여 train/val/test 신호를 생성합니다.
@@ -372,7 +374,11 @@ def ts_optimization(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.Da
     
     # --- [1단계] 각 기술적 지표의 최적 파라미터 찾기 ---
     print("- 이동평균(MA) 파라미터 최적화")
-    ma_best_params, _, _ = ma.run_MA_ga_optimization(train_df)
+    ma_best_params, _, _ = ma.run_MA_ga_optimization(
+        train_df,
+        population_size=ta_population_size,
+        generations=ta_generations,
+    )
     
     best_N = int(ma_best_params[0]) 
     best_n = int(ma_best_params[1])
@@ -380,11 +386,19 @@ def ts_optimization(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.Da
     print(f"     - [Slope 적용] 최적 주기 N={best_N}, n={best_n}을 기울기 계산에 사용합니다.")
 
     print("- RSI 파라미터 최적화")
-    rsi_best_params, _, _ = rsi.run_RSI_ga_optimization(train_df)
+    rsi_best_params, _, _ = rsi.run_RSI_ga_optimization(
+        train_df,
+        population_size=ta_population_size,
+        generations=ta_generations,
+    )
     print(f"     - RSI 최적 파라미터: {rsi_best_params}")
 
     print("- ROC 파라미터 최적화")
-    roc_best_params, _, _ = roc.run_roc_ga_optimization(train_df)
+    roc_best_params, _, _ = roc.run_roc_ga_optimization(
+        train_df,
+        population_size=ta_population_size,
+        generations=ta_generations,
+    )
     print(f"     - ROC 최적 파라미터: {roc_best_params}")
 
 
@@ -455,7 +469,9 @@ def ts_optimization(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.Da
     return train_df_with_signals, val_df_with_signals, test_df_with_signals, technical_signals_list
     
 def esn_rolling_forward(df: pd.DataFrame, n_splits: int = 5, initial_train_ratio: float = 0.5,
-                        pop_size: int = 50, num_generations: int = 20):
+                        pop_size: int = 50, num_generations: int = 20,
+                        ta_population_size: int = 50, ta_generations: int = 50,
+                        plot_results: bool = True):
     
     total_returns = []
     bh_returns = []
@@ -490,7 +506,11 @@ def esn_rolling_forward(df: pd.DataFrame, n_splits: int = 5, initial_train_ratio
             # --- 1단계: TA 최적화 ---
             print(f"[{i+1}/{n_splits}] 1단계: 기술적 지표 파라미터 최적화 (Train/Valid 신호 생성)...")
             train_df_with_signals, val_df_with_signals, test_df_with_signals, technical_signals_for_esn = ts_optimization(
-                train_df_with_cpm, val_df_with_cpm, test_df_with_cpm
+                train_df_with_cpm,
+                val_df_with_cpm,
+                test_df_with_cpm,
+                ta_population_size=ta_population_size,
+                ta_generations=ta_generations,
             )
 
             # --- 2단계: ESN 하이퍼파라미터 최적화 (GA) ---
@@ -516,7 +536,8 @@ def esn_rolling_forward(df: pd.DataFrame, n_splits: int = 5, initial_train_ratio
                 train_df=final_train_signals,
                 test_df=final_test_signals,
                 best_params=best_params,
-                technical_signals_list=final_signals_list
+                technical_signals_list=final_signals_list,
+                plot_results=plot_results,
             )
             
             if stats is not None:

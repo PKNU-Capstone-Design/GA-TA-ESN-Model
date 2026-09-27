@@ -13,20 +13,32 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class ExperimentConfig:
     n_splits: int
+    initial_train_ratio: float
     pop_size: int
     num_generations: int
+    ta_population_size: int
+    ta_generations: int
+    plot_results: bool
 
 
 FULL_EXPERIMENT = ExperimentConfig(
     n_splits=5,
+    initial_train_ratio=0.5,
     pop_size=30,
     num_generations=30,
+    ta_population_size=50,
+    ta_generations=50,
+    plot_results=True,
 )
 
 QUICK_CHECK = ExperimentConfig(
     n_splits=2,
+    initial_train_ratio=0.7,
     pop_size=4,
     num_generations=2,
+    ta_population_size=4,
+    ta_generations=2,
+    plot_results=False,
 )
 
 
@@ -63,7 +75,8 @@ def main() -> None:
 
     print(
         f"[{mode}] ticker={args.ticker}, folds={config.n_splits}, "
-        f"population={config.pop_size}, generations={config.num_generations}"
+        f"ESN(population={config.pop_size}, generations={config.num_generations}), "
+        f"TA(population={config.ta_population_size}, generations={config.ta_generations})"
     )
 
     ticker = yf.Ticker(args.ticker)
@@ -88,8 +101,12 @@ def main() -> None:
     best_params_cv, all_returns_cv = esn_rolling_forward(
         df=df,
         n_splits=config.n_splits,
+        initial_train_ratio=config.initial_train_ratio,
         pop_size=config.pop_size,
         num_generations=config.num_generations,
+        ta_population_size=config.ta_population_size,
+        ta_generations=config.ta_generations,
+        plot_results=config.plot_results,
     )
 
     print("최적 파라미터:", best_params_cv)
