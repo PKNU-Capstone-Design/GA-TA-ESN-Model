@@ -1,0 +1,7 @@
+backtesting
+deap
+numpy
+pandas
+scikit-learn
+TA-Lib
+yfinance
