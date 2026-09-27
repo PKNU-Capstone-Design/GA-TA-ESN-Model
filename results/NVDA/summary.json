@@ -1,0 +1,12 @@
+{
+  "fold_count": 5,
+  "mean_model_return_pct": 20.2148,
+  "std_model_return_pct": 16.9291,
+  "mean_buy_hold_return_pct": 91.316,
+  "mean_excess_return_pct": -71.1012,
+  "mean_max_drawdown_pct": -13.5775,
+  "positive_model_folds": 4,
+  "outperformed_buy_hold_folds": 1,
+  "total_trades": 31,
+  "ticker": "NVDA"
+}

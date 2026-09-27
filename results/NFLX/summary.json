@@ -1,0 +1,12 @@
+{
+  "fold_count": 5,
+  "mean_model_return_pct": 4.0889,
+  "std_model_return_pct": 21.3448,
+  "mean_buy_hold_return_pct": 41.1035,
+  "mean_excess_return_pct": -37.0146,
+  "mean_max_drawdown_pct": -12.5426,
+  "positive_model_folds": 2,
+  "outperformed_buy_hold_folds": 1,
+  "total_trades": 42,
+  "ticker": "NFLX"
+}
