@@ -1,0 +1,12 @@
+{
+  "fold_count": 5,
+  "mean_model_return_pct": -2.1983,
+  "std_model_return_pct": 6.3247,
+  "mean_buy_hold_return_pct": -16.7205,
+  "mean_excess_return_pct": 14.5221,
+  "mean_max_drawdown_pct": -17.1397,
+  "positive_model_folds": 2,
+  "outperformed_buy_hold_folds": 4,
+  "total_trades": 42,
+  "ticker": "INTC"
+}

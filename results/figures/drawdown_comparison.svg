@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500.0" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">Mean Maximum Drawdown by Ticker</text>
+<line x1="90" y1="104.84" x2="970" y2="104.84" stroke="#94a3b8" stroke-width="1"/>
+<text x="22" y="260.0" transform="rotate(-90 22 260.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475569">Maximum Drawdown (%)</text>
+<line x1="90" y1="430.00" x2="970" y2="430.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="435.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-19.2</text>
+<line x1="90" y1="358.00" x2="970" y2="358.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="363.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-14.9</text>
+<line x1="90" y1="286.00" x2="970" y2="286.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="291.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-10.7</text>
+<line x1="90" y1="214.00" x2="970" y2="214.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="219.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-6.4</text>
+<line x1="90" y1="142.00" x2="970" y2="142.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="147.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-2.2</text>
+<line x1="90" y1="70.00" x2="970" y2="70.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="75.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">2.1</text>
+<rect x="212.67" y="104.84" width="44.00" height="290.32" rx="3" fill="#dc2626"/>
+<text x="234.67" y="411.16" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">-17.1</text>
+<text x="236.67" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">INTC</text>
+<rect x="506.00" y="104.84" width="44.00" height="212.45" rx="3" fill="#dc2626"/>
+<text x="528.00" y="333.29" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">-12.5</text>
+<text x="530.00" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">NFLX</text>
+<rect x="799.33" y="104.84" width="44.00" height="229.98" rx="3" fill="#dc2626"/>
+<text x="821.33" y="350.82" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">-13.6</text>
+<text x="823.33" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">NVDA</text>
+<rect x="785" y="486" width="14" height="14" rx="2" fill="#dc2626"/>
+<text x="806" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">MDD</text>
+</svg>

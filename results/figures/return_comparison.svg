@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500.0" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">Mean Return by Ticker</text>
+<line x1="90" y1="350.23" x2="970" y2="350.23" stroke="#94a3b8" stroke-width="1"/>
+<text x="22" y="260.0" transform="rotate(-90 22 260.0)" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475569">Return (%)</text>
+<line x1="90" y1="430.00" x2="970" y2="430.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="435.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-29.7</text>
+<line x1="90" y1="358.00" x2="970" y2="358.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="363.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">-2.9</text>
+<line x1="90" y1="286.00" x2="970" y2="286.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="291.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">23.9</text>
+<line x1="90" y1="214.00" x2="970" y2="214.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="219.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">50.7</text>
+<line x1="90" y1="142.00" x2="970" y2="142.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="147.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">77.5</text>
+<line x1="90" y1="70.00" x2="970" y2="70.00" stroke="#e2e8f0" stroke-width="1"/>
+<text x="78" y="75.00" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#64748b">104.3</text>
+<rect x="188.67" y="350.23" width="44.00" height="5.91" rx="3" fill="#16a34a"/>
+<text x="210.67" y="372.14" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">-2.2</text>
+<rect x="236.67" y="350.23" width="44.00" height="44.93" rx="3" fill="#2563eb"/>
+<text x="258.67" y="411.16" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">-16.7</text>
+<text x="236.67" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">INTC</text>
+<rect x="482.00" y="339.24" width="44.00" height="10.99" rx="3" fill="#16a34a"/>
+<text x="504.00" y="332.24" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">4.1</text>
+<rect x="530.00" y="239.77" width="44.00" height="110.46" rx="3" fill="#2563eb"/>
+<text x="552.00" y="232.77" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">41.1</text>
+<text x="530.00" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">NFLX</text>
+<rect x="775.33" y="295.91" width="44.00" height="54.32" rx="3" fill="#16a34a"/>
+<text x="797.33" y="288.91" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">20.2</text>
+<rect x="823.33" y="104.84" width="44.00" height="245.39" rx="3" fill="#2563eb"/>
+<text x="845.33" y="97.84" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">91.3</text>
+<text x="823.33" y="458" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">NVDA</text>
+<rect x="600" y="486" width="14" height="14" rx="2" fill="#16a34a"/>
+<text x="621" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">GA-TA-ESN</text>
+<rect x="785" y="486" width="14" height="14" rx="2" fill="#2563eb"/>
+<text x="806" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">Buy & Hold</text>
+</svg>
