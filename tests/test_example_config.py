@@ -9,16 +9,24 @@ class ExperimentConfigTest(unittest.TestCase):
 
         self.assertEqual(FULL_EXPERIMENT, config)
         self.assertEqual(5, config.n_splits)
+        self.assertEqual(0.5, config.initial_train_ratio)
         self.assertEqual(30, config.pop_size)
         self.assertEqual(30, config.num_generations)
+        self.assertEqual(50, config.ta_population_size)
+        self.assertEqual(50, config.ta_generations)
+        self.assertTrue(config.plot_results)
 
     def test_quick_check_uses_reduced_values(self):
         config = get_experiment_config(quick=True)
 
         self.assertEqual(QUICK_CHECK, config)
         self.assertEqual(2, config.n_splits)
+        self.assertEqual(0.7, config.initial_train_ratio)
         self.assertEqual(4, config.pop_size)
         self.assertEqual(2, config.num_generations)
+        self.assertEqual(4, config.ta_population_size)
+        self.assertEqual(2, config.ta_generations)
+        self.assertFalse(config.plot_results)
 
 
 if __name__ == "__main__":

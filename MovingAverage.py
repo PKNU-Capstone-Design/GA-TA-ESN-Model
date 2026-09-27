@@ -127,7 +127,9 @@ def generate_MA_signals_vectorized(
     cond_sell_11 = (df['Wk'] < np.minimum(min_val_sell, c_bar))
     sell_signals = cond_sell_10 & cond_sell_11
 
-    df['Type'] = np.nan
+    # pandas 3.x에서는 float64 열에 문자열을 대입할 수 없으므로
+    # 신호 열을 처음부터 문자열을 담을 수 있는 object dtype으로 생성합니다.
+    df['Type'] = pd.Series(pd.NA, index=df.index, dtype='object')
     df.loc[buy_signals, 'Type'] = 'BUY'
     df.loc[sell_signals, 'Type'] = 'SELL'
 
@@ -237,7 +239,7 @@ def run_MA_ga_optimization(
     pool = multiprocessing.Pool()
     toolbox.register("map", pool.map)
 
-    print("--- MA 8-Params 벡터화 GA 최적화 시작 (순차 처리) ---")
+    print("--- MA 8-Params 벡터화 GA 최적화 시작 (병렬 처리) ---")
     pop = toolbox.population(n=population_size)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", np.mean)
@@ -245,11 +247,16 @@ def run_MA_ga_optimization(
     stats.register("max", np.max)
     hof = tools.HallOfFame(1)
 
-    algorithms.eaSimple(pop, toolbox, cxpb=0.7, mutpb=0.2, ngen=generations,
-                        stats=stats, halloffame=hof, verbose=True)
-
-    pool.close()
-    pool.join()
+    try:
+        algorithms.eaSimple(pop, toolbox, cxpb=0.7, mutpb=0.2, ngen=generations,
+                            stats=stats, halloffame=hof, verbose=True)
+    except Exception:
+        pool.terminate()
+        pool.join()
+        raise
+    else:
+        pool.close()
+        pool.join()
 
     best_individual = hof[0]
     best_fitness = best_individual.fitness.values[0]
@@ -270,7 +277,7 @@ def run_MA_ga_optimization(
     final_params = (final_N, final_n, final_a, final_b, final_c,
                     final_a_bar, final_b_bar, final_c_bar)
     
-    print(f"반환될 파라미터 (N, n, a, b, c, ā, ̄b, ̄c): {final_params}")
+    print(f"반환될 파라미터 (N, n, a, b, c, a_bar, b_bar, c_bar): {final_params}")
 
     suggested_signals_from_best_params = generate_MA_signals_vectorized(
         df_data, *final_params
