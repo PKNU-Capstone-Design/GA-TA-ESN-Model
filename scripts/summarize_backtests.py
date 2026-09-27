@@ -204,9 +204,9 @@ def svg_bar_chart(path: Path, title: str, labels, series, colors, y_label: str):
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<rect width="100%" height="100%" fill="#ffffff"/>',
-        f'<text x="{width/2}" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">{title}</text>',
+        f'<text x="{width/2}" y="34" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#172033">{html.escape(title)}</text>',
         f'<line x1="{left}" y1="{zero_y:.2f}" x2="{width-right}" y2="{zero_y:.2f}" stroke="#94a3b8" stroke-width="1"/>',
-        f'<text x="22" y="{height/2}" transform="rotate(-90 22 {height/2})" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475569">{y_label}</text>',
+        f'<text x="22" y="{height/2}" transform="rotate(-90 22 {height/2})" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#475569">{html.escape(y_label)}</text>',
     ]
 
     for tick in np.linspace(minimum, maximum, 6):
@@ -235,14 +235,14 @@ def svg_bar_chart(path: Path, title: str, labels, series, colors, y_label: str):
                 f'<text x="{x+(bar_width-4)/2:.2f}" y="{text_y:.2f}" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#334155">{value:.1f}</text>'
             )
         parts.append(
-            f'<text x="{center:.2f}" y="{height-bottom+28}" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">{label}</text>'
+            f'<text x="{center:.2f}" y="{height-bottom+28}" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">{html.escape(label)}</text>'
         )
 
     legend_x = width - right - 185 * len(names)
     for index, name in enumerate(names):
         x = legend_x + index * 185
         parts.append(f'<rect x="{x}" y="{height-34}" width="14" height="14" rx="2" fill="{colors[name]}"/>')
-        parts.append(f'<text x="{x+21}" y="{height-22}" font-family="Arial, sans-serif" font-size="13" fill="#334155">{name}</text>')
+        parts.append(f'<text x="{x+21}" y="{height-22}" font-family="Arial, sans-serif" font-size="13" fill="#334155">{html.escape(name)}</text>')
 
     parts.append("</svg>")
     path.parent.mkdir(parents=True, exist_ok=True)

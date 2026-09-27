@@ -33,5 +33,5 @@
 <rect x="600" y="486" width="14" height="14" rx="2" fill="#16a34a"/>
 <text x="621" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">GA-TA-ESN</text>
 <rect x="785" y="486" width="14" height="14" rx="2" fill="#2563eb"/>
-<text x="806" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">Buy & Hold</text>
+<text x="806" y="498" font-family="Arial, sans-serif" font-size="13" fill="#334155">Buy &amp; Hold</text>
 </svg>
