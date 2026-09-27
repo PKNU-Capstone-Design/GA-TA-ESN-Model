@@ -223,7 +223,8 @@ def run_genetic_algorithm(train_df_ga: pd.DataFrame, test_df_ga: pd.DataFrame, t
     return best_individual, log
     
 def perform_final_backtest(train_df: pd.DataFrame, test_df: pd.DataFrame, best_params: list, technical_signals_list: list,
-                         random_state: int = 42, plot_results: bool = True):
+                         random_state: int = 42, plot_results: bool = True,
+                         plot_filename: str = 'test_df_backtest_results'):
     spectral_radius, sparsity, input_scaling, buy_threshold, sell_threshold = best_params
 
     n_reservoir = N_RESERVOIR_FIXED
@@ -270,7 +271,7 @@ def perform_final_backtest(train_df: pd.DataFrame, test_df: pd.DataFrame, best_p
     print(stats_final)
     
     if plot_results:
-        bt_final.plot(filename='test_df_backtest_results', open_browser=True)
+        bt_final.plot(filename=plot_filename, open_browser=True)
     
     return stats_final, final_backtest_signals_df
 
@@ -538,6 +539,7 @@ def esn_rolling_forward(df: pd.DataFrame, n_splits: int = 5, initial_train_ratio
                 best_params=best_params,
                 technical_signals_list=final_signals_list,
                 plot_results=plot_results,
+                plot_filename=f'test_df_backtest_results_fold_{i+1}',
             )
             
             if stats is not None:

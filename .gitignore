@@ -15,5 +15,6 @@ env/
 htmlcov/
 
 *.log
+test_df_backtest_results*.html
 .DS_Store
 Thumbs.db
